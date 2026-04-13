@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  body {
+    background: #1e293b;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Title */
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .title button {
+    background: #334155;
+    color: white;
+    border: none;
+    padding: 4px 20px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .title h2 {
+    color: #cbd5e1;
+    font-size: 18px;
+  }
+  
+  /* Layout */
+  .contact_wrapper {
+    display: block;
+  }
+  
+  @media (min-width: 992px) {
+    .contact_wrapper {
+      display: flex;
+      gap: 50px;
+      padding-right: 50px;
+    }
+  }
+  
+  /* LEFT PANEL */
+  .contact_information {
+    position: relative;
+    width: 100%;
+    background: #374151;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding-top: 15px;
+    padding-bottom: 26px;
+    color: white;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    overflow: hidden;
+  }
+  
+  @media (min-width: 992px) {
+    .contact_information {
+      padding: 0;
+      margin: 0;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+  
+  /* Title inside */
+  .info_top {
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  
+  .info_top h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  
+  .info_top p {
+    font-size: 13px;
+  }
+  
+  @media (min-width: 992px) {
+    .info_top {
+      margin-bottom: 111px;
+      padding-top: 40px;
+      padding-left: 40px;
+      text-align: left;
+    }
+  
+    .info_top h2 {
+      font-size: 28px;
+    }
+  
+    .info_top p {
+      font-size: 18px;
+    }
+  }
+  
+  /* Contact Items */
+  .info_items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 57px;
+    width: 100%;
+  }
+  
+  .info_row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .info_row p {
+    font-size: 13px;
+    line-height:24px;
+  }
+  
+  @media (min-width: 992px) {
+    .info_items {
+      gap: 50px;
+      margin-bottom: 159px;
+      padding-left: 40px;
+      align-items: flex-start;
+    }
+  
+    .info_row {
+      flex-direction: row;
+      gap: 25px;
+      text-align: left;
+    }
+  
+    .info_row p {
+      font-size: 16px;
+    }
+  }
+  
+  /* Social */
+  .socials {
+    display: flex;
+    gap: 26px;
+  }
+  
+  @media (min-width: 992px) {
+    .socials {
+      padding-left: 39px;
+      padding-bottom: 36px;
+    }
+  }
+  
+  /* SVG */
+  .decor_svg {
+    position: absolute;
+    bottom: -75px;
+    right: -79px;
+  }
+  
+  .big_circle {
+    width: 150px;
+  }
+  
+  .small_circle {
+    width: 80px;
+    position: absolute;
+    top: -10px;
+    left: -20px;
+  }
+  
+  @media (min-width: 992px) {
+    .big_circle {
+      width: 200px;
+    }
+  
+    .small_circle {
+      width: 110px;
+    }
+  }
+  
+  /* RIGHT PANEL */
+  .contact_form {
+    padding: 17px;
+    color: white;
+  }
+  
+  @media (min-width: 992px) {
+    .contact_form {
+      padding: 0;
+      padding-top: 60px;
+    }
+  }
+  
+  /* FORM */
+  .form_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  @media (min-width: 992px) {
+    .form_grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px 0 ;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+  }
+  
+  label {
+    font-size: 12px;
+    color: #cbd5e1;
+  }
+  .subject h3{
+    margin-bottom: 10px;
+  }
+  
+  /* RADIO GRID */
+  .radio_group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .radio_group input{
+    width: inherit;
+  }
+  @media (min-width: 600px) {
+    .radio_group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .contact_form .subject{
+    margin: 20px 0px;
+  }
+  @media (min-width: 992px) {
+    .radio_group {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .radio_group label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  /* Message */
+  .message {
+    margin: 20px 0;
+  }
+  
+  /* Button */
+  .submit_btn {
+    background: #d1d5db;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 3px;
+  }

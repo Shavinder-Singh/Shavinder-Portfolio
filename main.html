@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hi, I'm Sagar</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f14;
+      --card: #13161e;
+      --border: #1f2330;
+      --text: #e8eaf0;
+      --muted: #7a7f94;
+      --green: #3effa0;
+      --white: #ffffff;
+    }
+
+    body {
+  
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      max-width: 860px;
+      width: 100%;
+      padding: 48px 52px;
+      display: flex;
+      align-items: center;
+      gap: 52px;
+
+      /* subtle glow */
+      box-shadow: 0 0 60px rgba(62, 255, 160, 0.04),
+                  0 20px 60px rgba(0,0,0,0.5);
+
+      /* entrance animation */
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Left: Text content ── */
+    .content { flex: 1; min-width: 0; }
+
+    .greeting {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .greeting .wave {
+      display: inline-block;
+      animation: wave 2.5s ease-in-out infinite;
+      transform-origin: 70% 70%;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      20%       { transform: rotate(18deg); }
+      40%       { transform: rotate(-8deg); }
+      60%       { transform: rotate(14deg); }
+      80%       { transform: rotate(-4deg); }
+    }
+
+    .bio {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* ── Meta info ── */
+    .meta { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .meta-item svg { flex-shrink: 0; }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 6px var(--green); }
+      50%       { box-shadow: 0 0 14px var(--green); }
+    }
+
+    .status-text { color: var(--green); font-weight: 500; }
+
+    /* ── Social Icons ── */
+    .socials { display: flex; gap: 16px; }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .social-btn:hover {
+      border-color: var(--green);
+      background: rgba(62, 255, 160, 0.06);
+      color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    /* ── Right: Photo ── */
+    .photo-wrap {
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .photo-wrap img {
+      width: 190px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    /* decorative corner accent */
+    .photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: -8px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--green);
+      border-radius: 16px;
+      opacity: 0.25;
+      z-index: -1;
+    }
+
+    /* ── Responsive: stack on mobile ── */
+    @media (max-width: 600px) {
+      .card {
+        flex-direction: column-reverse;
+        padding: 32px 24px;
+        gap: 28px;
+        text-align: center;
+      }
+      .meta-item { justify-content: center; }
+      .socials { justify-content: center; }
+      .photo-wrap img { width: 130px; height: 150px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- Left: Text -->
+    <div class="content">
+
+      <h1 class="greeting">
+        Hi, I'm Sagar <span class="wave">👋</span>
+      </h1>
+
+      <p class="bio">
+        I'm a full stack developer (React.js &amp; Node.js) with a focus on creating
+        (and occasionally designing) exceptional digital experiences that are fast,
+        accessible, visually appealing, and responsive. Even though I have been
+        creating web applications for over 7 years, I still love it as if it was
+        something new.
+      </p>
+
+      <div class="meta">
+        <!-- Location -->
+        <div class="meta-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          Ahmedabad, India
+        </div>
+
+        <!-- Status -->
+        <div class="meta-item">
+          <div class="status-dot"></div>
+          <span class="status-text">Available for new projects</span>
+        </div>
+      </div>
+
+      <!-- Social links -->
+      <div class="socials">
+
+        <!-- GitHub -->
+        <a href="#" class="social-btn" title="GitHub">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489
+                     .5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703
+                     -2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463
+                     -.908-.62.069-.607.069-.607 1.003.07 1.531 1.03 1.531 1.03
+                     .892 1.529 2.341 1.087 2.91.832.091-.647.35-1.088.636-1.338
+                     -2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683
+                     -.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025
+                     A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337
+                     1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647
+                     .64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935
+                     .359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743
+                     0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12
+                     c0-5.523-4.477-10-10-10z"/>
+          </svg>
+        </a>
+
+        <!-- Twitter / X -->
+        <a href="#" class="social-btn" title="Twitter">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817
+                     L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161
+                     17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+
+        <!-- Hashnode / Blog -->
+        <a href="#" class="social-btn" title="Blog">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22.351 8.019l-6.37-6.37a5.63 5.63 0 00-7.962 0l-6.37
+                     6.37a5.63 5.63 0 000 7.962l6.37 6.37a5.63 5.63 0 007.962
+                     0l6.37-6.37a5.63 5.63 0 000-7.962zM12 15.953a3.953 3.953
+                     0 110-7.906 3.953 3.953 0 010 7.906z"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Right: Photo placeholder -->
+    <div class="photo-wrap">
+      <!--
+        Replace the src below with your actual photo path, e.g.:
+        src="photo.jpg"
+        The image should be a portrait (taller than wide).
+      -->
+      <img
+        src="./images/shavinder First image.png"
+        alt="Shavinder – Developer"
+      />
+    </div>
+
+  </div>
+
+</body>
+</html>

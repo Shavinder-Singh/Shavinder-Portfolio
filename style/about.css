@@ -1,0 +1,152 @@
+/* Plain CSS for About section (loaded from index.html) */
+
+
+
+.about_badge{
+    font-family: interRegular;
+    font-weight: 400;
+}
+
+.about_section {
+    background-color: var(--fourth-color);
+    padding: 64px 16px;
+}
+
+.about_header {
+    text-align: center;
+    padding-bottom: 24px;
+}
+
+.about_badge {
+    background: var(--third-color);
+    color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 4px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: var(--fs-small);
+}
+
+.about_layout {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.about_photo_wrap {
+    width: 100%;
+}
+
+.about_photo {
+    width: 100%;
+    max-width: 340px;
+    height: 470px;
+    margin: 0 auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: transparent;
+    display: block;
+}
+
+.about_photo_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about_content {
+    width: 100%;
+}
+
+.about_title {
+    color: var(--white-color);
+    
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-family: interBold;
+}
+
+
+.about_paragraph {
+    font-family: interRegular;
+    color: var(--secondary-color);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.about_quick_bits {
+    margin-top: 8px;
+}
+
+.about_quick_bits_label {
+    margin-bottom: 16px;
+    color: var(--secondary-color);
+}
+
+.about_education_list {
+    margin: 0 0 16px 0;
+    padding-left: 22px;
+    color: var(--muted);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 10px;
+    column-gap: 10px;
+    list-style: disc;
+}
+
+.about_education_list li {
+    margin: 0;
+    line-height: 24px;
+    color: var(--secondary-color);
+}
+
+@media (min-width: 768px) {
+    .about_section {
+        padding: 96px 16px;
+    }
+
+    .about_layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 48px;
+    }
+
+    .about_photo {
+        max-width: none;
+        width: 100%;
+        height: 495px;
+        margin: 0;
+    }
+
+    .about_title {
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .about_badge{
+        margin-bottom: 40px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about_section {
+        padding: 80px 40px;
+    }
+
+    .about_photo {
+        width: 450px;
+        height: 648px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .about_section {
+        padding: 96px 80px;
+    }
+
+}

@@ -1,0 +1,231 @@
+
+/* main image */
+.front_image{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.3s ease-in-out;
+    transform: translateY(50px);
+    pointer-events: none;
+    visibility: hidden;
+}
+.front_image.show{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+}
+
+@media(min-width:900px){
+    .front_image{
+    transition: opacity 0.9s ease-in-out,transform 0.3s ease-in-out;
+    transform: translateX(10px);
+}
+.front_image.show{
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    visibility: visible;
+}
+}
+
+
+
+
+/* language images */
+.lang_image{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.3s ease-in-out;
+    transform: translateY(20px);
+    pointer-events: none;
+    visibility: hidden;
+}
+.lang_image.show{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+}
+/* navigation bar */
+.nav_bar{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.3s ease-in-out;
+    transform: translateY(-50px);
+}
+.nav_bar.show{
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+/* main section p h1 tags  Icons*/
+.content_anim{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+    /* transform: translateY(50px); */
+}
+.content_anim.show{
+    opacity: 1;
+    /* transform: translateY(0); */
+}
+
+
+.main_socials_anim{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.4s ease-in-out;
+    transform: translateX(-20px);
+}
+.main_socials_anim.show{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+
+@media(min-width:900px){
+   .content_anim{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.4s ease-in-out;
+    transform: translateX(-20px);
+}
+.content_anim.show{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+.main_socials_anim{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.4s ease-in-out;
+    transform: translateX(-20px);
+}
+.main_socials_anim.show{
+    opacity: 1;
+    transform: translateX(0);
+}
+}
+
+
+/* sections main buttons */
+.section_btn{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.4s ease-in-out,scale 0.4s ease-in-out;
+    transform: translateY(-10px);
+    transform: scale(0);
+}
+.section_btn.show{
+    opacity: 1;
+    transform: translateY(0);
+    transform: scale(1);
+}
+
+
+/* section headlines */
+.section_headline{
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.section_headline.show{
+    opacity: 1;
+}
+
+
+
+/* footer email phone sections */
+.footer_socials{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+}   
+.footer_socials.show{
+    opacity: 1;
+}
+
+/* Only fade text all website  */
+.onlyfade{
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.onlyfade.show{
+    opacity: 1;
+}
+
+
+
+/* experience section card */
+.experience_card{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.4s ease-in-out;
+    transform: translateY(20px);
+}
+.experience_card.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* projects cards */
+.project-card {
+    opacity: 0;
+    transition: 0.3s ease;
+}
+.project-card.left {
+    transform: translateY(30px);
+}
+.project-card.right {
+    transform: translateY(30px);
+}
+
+.project-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@media(min-width:900px){
+/* projects cards */
+.project-card {
+    opacity: 0;
+    transition: 0.8s ease;
+}
+.project-card.left {
+    transform: translateX(-120px);
+}
+.project-card.right {
+    transform: translateX(120px);
+}
+
+.project-card.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+}
+
+
+/* contact section */
+.contact_information{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.4s ease-in-out;
+    transform: translateY(20px);
+}
+.contact_information.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* contact section */
+.contact_form{
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out,transform 0.4s ease-in-out;
+    transform: translateY(20px);
+}
+.contact_form.show{
+    opacity: 1;
+    transform: translateY(0);
+}

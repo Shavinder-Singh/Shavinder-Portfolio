@@ -1,0 +1,100 @@
+/* Plain CSS for Skills section */
+
+.skills_section {
+    padding: 64px 16px;
+    background-color: var(--primary-color);
+}
+
+.skills_header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.skills_badge {
+    background: var(--third-color);
+    color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 4px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: var(--fs-small);
+    font-family: interMedium;
+}
+
+.skills_heading {
+    color: var(--secondary-color);
+    text-align: center;
+    line-height: 28px;
+    margin: 0 auto 24px;
+    max-width: 70ch;
+    font-size: 18px;
+}
+
+.skills_grid {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 57px;
+    row-gap: 16px;
+    justify-items: center;
+}
+
+.skill_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    text-align: center;
+}
+
+.skill_item img {
+    width: 50px;
+    height: auto;
+    display: block;
+}
+
+.skill_item p {
+    color: var(--secondary-color);
+    margin-top: 8px;
+}
+   .skills_heading {
+    font-family: interRegular;
+    line-height: 28px;
+    }
+
+@media (min-width: 768px) {
+    .skills_section {
+        padding: 64px 16px;
+    }
+
+    .skills_heading {
+        margin-bottom: 48px;
+        font-size: 20px;
+    }
+
+    .skills_grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        row-gap: 48px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .skills_section {
+        padding: 80px 40px;
+    }
+
+    .skills_grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+
+@media (min-width: 1440px) {
+    .skills_section {
+        padding: 96px 80px;
+    }
+
+}
+

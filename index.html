@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/loader.css">
+    <link rel="stylesheet" href="./style/scrolltoup.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/about.css">
+    <link rel="stylesheet" href="./style/skills.css">
+    <link rel="stylesheet" href="./style/experience.css">
+    <link rel="stylesheet" href="./style/work.css">
+    <link rel="stylesheet" href="./style/contact.css">
+    <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="./style/animated.css">
+
+    <title>Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: inter, california;
+        }
+
+        @font-face {
+            font-family: inter;
+            src: url('./fonts/inter-ui/Inter-UI-Black.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: interRegular;
+            src: url("./fonts/inter-ui/Inter-UI-Regular.otf");
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: interMedium;
+            src: url("./fonts/inter-ui/Inter-UI-Medium.otf");
+        }
+
+        @font-face {
+            font-family: interBold;
+            src: url("./fonts/inter-ui/Inter-UI-Bold.otf")
+        }
+
+        @font-face {
+            font-family: california;
+            src: url('./fonts/california_13/CALIFORNIA\ PERSONAL\ USE.ttf') format('truetype');
+            font-weight: 500;
+        }
+
+        body.dark {
+            background-color: white;
+        }
+
+        body.active {
+            overflow: hidden;
+        }
+
+        .wave {
+            z-index: 0;
+            position: relative;
+        }
+
+        #menu {}
+
+        .body_container {
+            display: none;
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            transition: opacity 0.5s ease;
+
+        }
+
+        .body_container.loaded {
+            /* opacity: 1; */
+            display: block;
+            /* visibility: visible; */
+            /* transition: opacity 0.5s ease; */
+        }
+
+        nav {
+            background: var(--primary-color);
+        }
+
+        .nav_bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .logo {
+            color: var(--white-color);
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* ================= MOBILE ================= */
+
+        #menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        #menu.active {
+            z-index: 1;
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #menu ul {
+            list-style: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 16px;
+            border-top: 1px solid #111827;
+            border-bottom: 1px solid #111827;
+        }
+
+        #menu ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        #menu-btn {
+            cursor: pointer;
+        }
+
+        /* ICON SWITCH */
+        #menu-btn svg:last-child {
+            display: none;
+        }
+
+        #menu-btn.active svg:first-child {
+            display: none;
+        }
+
+        #menu-btn.active svg:last-child {
+            display: block;
+        }
+
+        .light_download_container {
+            width: 100%;
+            padding: 16px;
+            color: white;
+        }
+
+        .light_download_container div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 16px;
+            width: 100%;
+        }
+
+        #download_btn {
+            width: 212px;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            white-space: nowrap;
+        }
+
+        /* ================= DESKTOP ================= */
+        @media(min-width:1024px) {
+
+            .nav_bar {
+                padding: 16px 40px;
+            }
+
+            /* hide button */
+            #menu-btn {
+                display: none;
+            }
+
+            /* show menu ALWAYS */
+            #menu {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: auto;
+                height: 100%;
+            }
+
+            #menu ul {
+                flex-direction: row;
+                gap: 24px;
+                border: none;
+                padding: 0;
+                padding-right: 24px;
+                justify-content: center;
+                border-right: 1px solid #1F2937;
+            }
+
+            .light_download_container p {
+                display: none;
+            }
+
+            .light_download_container div {
+                margin: 0;
+            }
+
+            .light_download_container svg {
+                margin-left: 24px;
+                margin-right: 16px;
+            }
+
+            .light_download_container {
+                display: flex;
+                align-items: center;
+                padding: 0;
+            }
+
+            #download_btn {
+                width: auto;
+                padding: 10px 16px;
+            }
+        }
+
+        @media(min-width:1440px) {
+            .nav_bar {
+                padding: 16px 80px;
+            }
+        }
+
+        .light_icon {
+            display: none;
+        }
+
+        #popup {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+
+            background: #ffffff;
+            color: #333;
+
+            padding: 12px 24px;
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+            border: 1px solid #eee;
+
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        /* show */
+        #popup.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* form popup */
+
+
+        #form_popup {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+
+            background: #ffffff;
+            color: #333;
+
+            padding: 12px 24px;
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid #eee;
+
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        #form_popup.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <div class="loader">
+        <div class="load-text">
+            <div class="loaded-text">I</div>
+            <div class="loading-text">nitializing…</div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-container">
+
+        <div class="scroll-btn">
+            <div class="line l1"></div>
+            <div class="line l2"></div>
+            <div class="line l3"></div>
+            <div class="line l4"></div>
+            <div class="line l5"></div>
+        </div>
+
+        <p class="scrollContent">Throttle up</p>
+
+    </div>
+
+    <div class="body_container">
+        <nav>
+            <div class="nav_bar">
+
+                <div class="logo" title="Shavinder Singh">&lt;SS/&gt;</div>
+
+                <div id="menu-btn">
+                    <!-- hamburger -->
+                    <svg width="36" height="36">
+                        <path d="M10 18H26" stroke="white" stroke-width="2" />
+                        <path d="M10 12H26" stroke="white" stroke-width="2" />
+                        <path d="M10 24H26" stroke="white" stroke-width="2" />
+                    </svg>
+
+                    <!-- close -->
+                    <svg width="36" height="36">
+                        <path d="M24 12L12 24" stroke="white" stroke-width="2" />
+                        <path d="M12 12L24 24" stroke="white" stroke-width="2" />
+                    </svg>
+                </div>
+
+                <div id="menu">
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+
+                    <div class="light_download_container">
+                        <div>
+                            <p>Switch Theme</p>
+                            <svg width="36" height="36" class="dark_icon" viewBox="0 0 36 36" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18 9C16.8065 10.1935 16.136 11.8122 16.136 13.5C16.136 15.1878 16.8065 16.8065 18 18C19.1935 19.1935 20.8122 19.864 22.5 19.864C24.1878 19.864 25.8065 19.1935 27 18C27 19.78 26.4722 21.5201 25.4832 23.0001C24.4943 24.4802 23.0887 25.6337 21.4442 26.3149C19.7996 26.9961 17.99 27.1743 16.2442 26.8271C14.4984 26.4798 12.8947 25.6226 11.636 24.364C10.3774 23.1053 9.5202 21.5016 9.17294 19.7558C8.82567 18.01 9.0039 16.2004 9.68509 14.5558C10.3663 12.9113 11.5198 11.5057 12.9999 10.5168C14.4799 9.52784 16.22 9 18 9Z"
+                                    stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M25 9V13" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M27 11H23" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <!-- White theme icon -->
+                            <svg width="36" height="36" class="light_icon" viewBox="0 0 36 36" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18 22C20.2091 22 22 20.2091 22 18C22 15.7909 20.2091 14 18 14C15.7909 14 14 15.7909 14 18C14 20.2091 15.7909 22 18 22Z"
+                                    stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                                <path d="M18 8V10" stroke="#4B5563" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M18 26V28" stroke="#4B5563" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M10.9299 10.93L12.3399 12.34" stroke="#4B5563" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M23.6599 23.66L25.0699 25.07" stroke="#4B5563" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M8 18H10" stroke="#4B5563" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M26 18H28" stroke="#4B5563" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M12.3399 23.66L10.9299 25.07" stroke="#4B5563" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M25.0699 10.93L23.6599 12.34" stroke="#4B5563" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <a href="./Shavinder Singh Resume (2).pdf" style="display: block;" class="download_button"
+                            download>
+                            <button id="download_btn">Download CV</button>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </nav>
+
+        <main class="page">
+            <!-- HERO -->
+            <section class="hero" id="hero_section">
+                <div class="hero_container">
+                    <div class="hero-card card-surface">
+                        <div class="hero-content">
+                            <h1 class="greeting  content_anim">
+                                Hi, I'm Shavinder <span class="wave">👋</span>
+                            </h1>
+
+                            <p class="bio content_anim">
+
+                                I am a frontend developer with one year of experience in creating beautiful, responsive
+                                websites. I completed an internship where I honed my web development skills. My work
+                                combines creativity and technical expertise to deliver user-friendly digital
+                                experiences.
+                                I'm passionate about web technologies and always strive to improve my craft.
+                            </p>
+
+                            <div class="meta ">
+                                <div class="meta-item content_anim">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M20 10C20 16 12 22 12 22C12 22 4 16 4 10C4 7.87827 4.84285 5.84344 6.34315 4.34315C7.84344 2.84285 9.87827 2 12 2C14.1217 2 16.1566 2.84285 17.6569 4.34315C19.1571 5.84344 20 7.87827 20 10Z"
+                                            stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z"
+                                            stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+
+                                    Kharar, Punjab, India
+                                </div>
+
+                                <div class="meta-item content_anim">
+                                    <div class="status-dot">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="8" y="8" width="8" height="8" rx="4" fill="#10B981" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="status-text">Available for new projects</span>
+                                </div>
+                            </div>
+
+                            <div class="socials ">
+                                <a href="https://github.com/Shavinder-Singh" class="social-btn main_socials_anim"
+                                    title="GitHub" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="36" height="36"
+                                        fill="white">
+                                        <path class=""
+                                            d="M 29 17 C 22.383 17 17 22.383 17 29 L 17 71 C 17 77.617 22.383 83 29 83 L 71 83 C 77.617 83 83 77.617 83 71 L 83 29 C 83 22.383 77.617 17 71 17 L 29 17 z M 29 19 L 71 19 C 76.514 19 81 23.486 81 29 L 81 71 C 81 76.514 76.514 81 71 81 L 29 81 C 23.486 81 19 76.514 19 71 L 19 29 C 19 23.486 23.486 19 29 19 z M 34.5 23 C 28.159 23 23 28.159 23 34.5 L 23 65.5 C 23 71.841 28.159 77 34.5 77 L 41.976562 77 L 58.976562 77 L 65.5 77 C 71.841 77 77 71.841 77 65.5 L 77 50.5 C 77 50.224 76.776 50 76.5 50 C 76.224 50 76 50.224 76 50.5 L 76 65.5 C 76 71.29 71.29 76 65.5 76 L 59.476562 76 L 59.476562 67.654297 C 59.476563 65.441297 58.439422 63.368 56.732422 62 L 57.425781 62 C 64.598781 62 70.433594 56.186062 70.433594 49.039062 C 70.433594 45.802062 69.233828 42.710641 67.048828 40.306641 C 67.378828 38.242641 67.384219 35.143797 66.449219 32.341797 C 66.380219 32.137797 66.189609 32 65.974609 32 C 61.923609 32 58.503172 34.689 57.076172 36 L 44.667969 36 C 41.167969 32.696 38.012563 32 35.976562 32 C 35.761563 32 35.570953 32.137797 35.501953 32.341797 C 34.733953 34.642797 34.396469 37.396609 34.605469 39.599609 C 32.006469 42.053609 30.521484 45.479016 30.521484 49.041016 C 30.521484 56.187016 36.355344 62 43.527344 62 L 44.195312 62 C 42.874313 63.032 41.928406 64.451094 41.566406 65.996094 C 39.569406 65.964094 37.279938 65.668453 36.210938 64.064453 C 33.785937 60.424453 32.562609 60.152344 30.974609 60.152344 C 30.311609 60.152344 29.812516 60.442266 29.603516 60.947266 C 29.309516 61.655266 29.652484 62.597797 30.521484 63.466797 C 31.693484 64.639797 31.694672 64.638391 32.888672 67.025391 C 33.610672 68.469391 35.679563 70.863141 41.476562 70.994141 L 41.476562 76 L 34.5 76 C 28.71 76 24 71.29 24 65.5 L 24 34.5 C 24 28.71 28.71 24 34.5 24 L 65.5 24 C 65.776 24 66 23.776 66 23.5 C 66 23.224 65.776 23 65.5 23 L 34.5 23 z M 36.337891 33.007812 C 38.205891 33.091813 40.957156 33.850344 44.035156 36.777344 L 44.126953 36.865234 C 44.219953 36.952234 44.34175 37 44.46875 37 L 57.273438 37 C 57.400437 37 57.533953 36.942469 57.626953 36.855469 C 58.818953 35.732469 61.931281 33.169812 65.613281 33.007812 C 66.412281 35.652813 66.354484 38.524906 66.021484 40.378906 C 65.993484 40.535906 66.041391 40.695547 66.150391 40.810547 C 68.266391 43.052547 69.433594 45.975062 69.433594 49.039062 C 69.433594 55.634062 64.046781 61 57.425781 61 L 54.976562 61 C 54.741562 61 54.538281 61.163578 54.488281 61.392578 C 54.437281 61.621578 54.553578 61.855125 54.767578 61.953125 C 57.019578 62.986125 58.476562 65.223297 58.476562 67.654297 L 58.476562 76 L 42.476562 76 L 42.476562 70.5 C 42.476562 70.224 42.252563 70 41.976562 70 C 37.795563 70 34.885203 68.784125 33.783203 66.578125 C 32.540203 64.093125 32.515516 64.046766 31.228516 62.759766 C 30.557516 62.087766 30.441344 61.536078 30.527344 61.330078 C 30.590344 61.175078 30.834609 61.152344 30.974609 61.152344 C 32.097609 61.152344 33.067906 61.152141 35.378906 64.619141 C 36.785906 66.728141 39.643563 67 41.976562 67 C 42.221562 67 42.42975 66.822078 42.46875 66.580078 C 42.78675 64.631078 44.209594 62.859078 46.183594 61.955078 C 46.397594 61.857078 46.515844 61.623531 46.464844 61.394531 C 46.414844 61.164531 46.211562 61 45.976562 61 L 43.529297 61 C 36.909297 61 31.521484 55.634062 31.521484 49.039062 C 31.521484 45.674062 32.958844 42.439062 35.464844 40.164062 C 35.583844 40.055063 35.645953 39.896328 35.626953 39.736328 C 35.397953 37.769328 35.675891 35.169812 36.337891 33.007812 z M 76.5 34 C 76.224 34 76 34.224 76 34.5 L 76 38 C 76 38.276 76.224 38.5 76.5 38.5 C 76.776 38.5 77 38.276 77 38 L 77 34.5 C 77 34.224 76.776 34 76.5 34 z M 76.5 41 C 76.224 41 76 41.224 76 41.5 L 76 48 C 76 48.276 76.224 48.5 76.5 48.5 C 76.776 48.5 77 48.276 77 48 L 77 41.5 C 77 41.224 76.776 41 76.5 41 z">
+                                        </path>
+                                    </svg>
+                                </a>
+
+                                <a href="https://www.linkedin.com/in/shavinder-singh-b281b22a7/"
+                                    class="main_socials_anim">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="28"
+                                            height="28" fill="white">
+                                            <path class=""
+                                                d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z M 9 6 L 41 6 C 42.668484 6 44 7.3315161 44 9 L 44 41 C 44 42.668484 42.668484 44 41 44 L 9 44 C 7.3315161 44 6 42.668484 6 41 L 6 9 C 6 7.3315161 7.3315161 6 9 6 z M 14 11.011719 C 12.904779 11.011719 11.919219 11.339079 11.189453 11.953125 C 10.459687 12.567171 10.011719 13.484511 10.011719 14.466797 C 10.011719 16.333977 11.631285 17.789609 13.691406 17.933594 A 0.98809878 0.98809878 0 0 0 13.695312 17.935547 A 0.98809878 0.98809878 0 0 0 14 17.988281 C 16.27301 17.988281 17.988281 16.396083 17.988281 14.466797 A 0.98809878 0.98809878 0 0 0 17.986328 14.414062 C 17.884577 12.513831 16.190443 11.011719 14 11.011719 z M 14 12.988281 C 15.392231 12.988281 15.94197 13.610038 16.001953 14.492188 C 15.989803 15.348434 15.460091 16.011719 14 16.011719 C 12.614594 16.011719 11.988281 15.302225 11.988281 14.466797 C 11.988281 14.049083 12.140703 13.734298 12.460938 13.464844 C 12.78117 13.19539 13.295221 12.988281 14 12.988281 z M 11 19 A 1.0001 1.0001 0 0 0 10 20 L 10 39 A 1.0001 1.0001 0 0 0 11 40 L 17 40 A 1.0001 1.0001 0 0 0 18 39 L 18 33.134766 L 18 20 A 1.0001 1.0001 0 0 0 17 19 L 11 19 z M 20 19 A 1.0001 1.0001 0 0 0 19 20 L 19 39 A 1.0001 1.0001 0 0 0 20 40 L 26 40 A 1.0001 1.0001 0 0 0 27 39 L 27 29 C 27 28.170333 27.226394 27.345035 27.625 26.804688 C 28.023606 26.264339 28.526466 25.940057 29.482422 25.957031 C 30.468166 25.973981 30.989999 26.311669 31.384766 26.841797 C 31.779532 27.371924 32 28.166667 32 29 L 32 39 A 1.0001 1.0001 0 0 0 33 40 L 39 40 A 1.0001 1.0001 0 0 0 40 39 L 40 28.261719 C 40 25.300181 39.122788 22.95433 37.619141 21.367188 C 36.115493 19.780044 34.024172 19 31.8125 19 C 29.710483 19 28.110853 19.704889 27 20.423828 L 27 20 A 1.0001 1.0001 0 0 0 26 19 L 20 19 z M 12 21 L 16 21 L 16 33.134766 L 16 38 L 12 38 L 12 21 z M 21 21 L 25 21 L 25 22.560547 A 1.0001 1.0001 0 0 0 26.798828 23.162109 C 26.798828 23.162109 28.369194 21 31.8125 21 C 33.565828 21 35.069366 21.582581 36.167969 22.742188 C 37.266572 23.901794 38 25.688257 38 28.261719 L 38 38 L 34 38 L 34 29 C 34 27.833333 33.720468 26.627107 32.990234 25.646484 C 32.260001 24.665862 31.031834 23.983076 29.517578 23.957031 C 27.995534 23.930001 26.747519 24.626988 26.015625 25.619141 C 25.283731 26.611293 25 27.829667 25 29 L 25 38 L 21 38 L 21 21 z">
+                                            </path>
+                                        </svg> </span></a>
+
+                                <a href="https://www.instagram.com/shavinder141/" class="social-btn main_socials_anim"
+                                    title="Blog" aria-label="Blog">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28" height="28"
+                                        fill="white">
+                                        <path class=""
+                                            d="M 15 4 C 8.9365932 4 4 8.9365932 4 15 L 4 33 C 4 39.063407 8.9365932 44 15 44 L 33 44 C 39.063407 44 44 39.063407 44 33 L 44 15 C 44 8.9365932 39.063407 4 33 4 L 15 4 z M 15 6 L 33 6 C 37.982593 6 42 10.017407 42 15 L 42 33 C 42 37.982593 37.982593 42 33 42 L 15 42 C 10.017407 42 6 37.982593 6 33 L 6 15 C 6 10.017407 10.017407 6 15 6 z M 35 11 C 33.895 11 33 11.895 33 13 C 33 14.105 33.895 15 35 15 C 36.105 15 37 14.105 37 13 C 37 11.895 36.105 11 35 11 z M 24 14 C 18.488666 14 14 18.488666 14 24 C 14 29.511334 18.488666 34 24 34 C 29.511334 34 34 29.511334 34 24 C 34 18.488666 29.511334 14 24 14 z M 24 16 C 28.430666 16 32 19.569334 32 24 C 32 28.430666 28.430666 32 24 32 C 19.569334 32 16 28.430666 16 24 C 16 19.569334 19.569334 16 24 16 z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="hero-photo">
+                            <img src="./images/shavinder First image.png" alt="Shavinder" class="front_image"
+                                loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ABOUT Section -->
+            <section id="about" class="about_section aboutme_section">
+                <div class="about_header">
+                    <button class="about_badge section_btn" type="button">About me</button>
+                </div>
+
+                <div class="about_layout">
+                    <div class="about_photo_wrap">
+                        <div class="about_photo front_image">
+                            <img class="about_photo_img " src="./images/Shavinder Second Image.png" alt="About me photo"
+                                loading="lazy" />
+                        </div>
+                    </div>
+
+                    <div class="about_content">
+                        <h2 class="about_title content_anim">Curious about me? Here you have it:</h2>
+
+                        <p class="about_paragraph content_anim">
+
+                            I am a passionate, self-proclaimed frontend developer specializing in creating beautiful and
+                            responsive websites. I am enthusiastic about bringing the technical and visual aspects of
+                            digital products to life. User experience, pixel-perfect design, and writing clear,
+                            readable,
+                            highly performant code matter to me.
+                        </p>
+                        <p class="about_paragraph content_anim">
+
+                            I began my journey as a frontend web developer in 2023, and since then, I've continued to
+                            grow
+                            and evolve as a developer, taking on new challenges and learning the latest technologies
+                            along
+                            the way. I'm building cutting-edge web applications using modern technologies such as
+                            React.js,
+                            Wordpress, Sass, Tailwindcss, and much more.
+                        </p>
+                        <p class="about_paragraph content_anim">
+
+                            I am very much a progressive thinker and enjoy working on products end to end, from ideation
+                            all
+                            the way to development.
+                        </p>
+                        <p class="about_paragraph content_anim">
+
+                            When I'm not in full-on developer mode, you can find me hovering around on Instagram or you
+                            can
+                            follow me on GitHub.
+                        </p>
+
+                        <div class="about_quick_bits content_anim">
+                            <p class="about_paragraph about_quick_bits_label">Finally, some quick bits about me.</p>
+
+                            <ul class="about_education_list">
+                                <li>
+                                    Bachelor of Computer Applications
+                                </li>
+                                <li>
+                                    Avid learner
+                                </li>
+
+                                <li>
+                                    Aspiring indie hacker
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <p class="about_paragraph content_anim">
+                            One last thing, I'm available for freelance work, so feel free to reach out and say hello! I
+                            promise I don't bite 😉
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- SKILLS Section -->
+            <section id="skills" class="skills_section">
+                <div class="skills_header">
+                    <button class="skills_badge section_btn" type="button">Skills</button>
+                </div>
+
+                <h2 class="skills_heading section_headline">The skills, tools and technologies I am really good at:</h2>
+
+                <div class="skills_grid">
+                    <div class="skill_item lang_image">
+                        <img src="./images/skills image/html.png" alt="HTML" loading="lazy" />
+                        <p class="onlyfade">HTML</p>
+                    </div>
+                    <div class="skill_item lang_image">
+                        <img src="./images/skills image/css.png" alt="CSS" loading="lazy" />
+                        <p class="onlyfade">CSS</p>
+                    </div>
+                    <div class="skill_item lang_image">
+                        <img src="./images/skills image/js.png" alt="JavaScript" loading="lazy" />
+                        <p class="onlyfade">JavaScript</p>
+                    </div>
+                    <div class="skill_item lang_image">
+                        <img src="./images/skills image/tailwind.png" alt="Tailwind" loading="lazy" />
+                        <p class="onlyfade">Tailwindcss</p>
+                    </div>
+                    <div class="skill_item lang_image">
+                        <img src="./images/skills image/sass.png" alt="Sass" loading="lazy" />
+                        <p class="onlyfade">Sass</p>
+                    </div>
+                    <div class="skill_item lang_image">
+                        <img src="./images/skills image/react.png" alt="React" loading="lazy" />
+                        <p class="onlyfade">React JS</p>
+                    </div>
+                    <div class="skill_item lang_image">
+                        <img src="./images/skills image/wordpress.png" alt="Wordpress" loading="lazy" />
+                        <p class="onlyfade">Wordpress</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPERIENCE Section -->
+            <section id="experience" class="experience_section">
+                <div class="experience_header">
+                    <button class="experience_badge section_btn" type="button">Experience</button>
+                </div>
+
+                <h2 class="experience_slogan section_headline">Here is a quick summary of my most recent experiences:
+                </h2>
+
+                <div class="experience_card">
+                    <img src="./images/experience/solitaire_infosys.png" alt="Solitaire infosys Logo"
+                        class="experience_logo" loading="lazy" />
+
+                    <div class="experience_dates">
+                        <h3>May 23, 2023</h3>
+                        <span class="experience_dash">-</span>
+                        <h3>November 23, 2024</h3>
+                    </div>
+
+                    <div class="experience_details">
+                        <p class="experience_role">Sr. Frontend Developer</p>
+
+                        <ul class="experience_points">
+                            <li>I Developed responsive Websites for all screen sizes.</li>
+                            <li>Gained experience in the entire front-end development lifecycle.</li>
+                            <li>Constantly explored new ways to improve my skills and knowledge</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- WORK Section -->
+            <section class="work_section" id="work">
+                <div class="experience_title">
+                    <button class="label-btn section_btn">Work</button>
+                </div>
+
+                <h2 class="section-heading section_headline">Some of the noteworthy projects I have built:</h2>
+
+                <!-- Project 1 (odd - image left) -->
+                <div class="project-card">
+                    <div class="project-image-wrap">
+                        <img src="./images/projects image/amazon.jpg" alt="Analytics Dashboard Project"
+                            class="project-img" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-heading">Amazon Prime Video Website</h4>
+                        <p class="project-description">
+                            I made a clone of the Amazon Prime Video website using HTML, JavaScript, ReactJS, and
+                            Tailwind
+                            CSS. The website features a user-friendly interface with a responsive layout and a carousel
+                            for
+                            featured content. It showcases front-end development skills and a clean, modern design.
+                        </p>
+                        <div class="project-tags">
+                            <button class="tag-btn">JavaScript</button>
+                            <button class="tag-btn">HTML</button>
+                            <button class="tag-btn">React</button>
+                            <button class="tag-btn">Tailwind Css</button>
+                        </div>
+                        <div class="project-link">
+                            <a href="https://amazoncloneshevy.netlify.app/" aria-label="View project">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="18" cy="18" r="17.5" stroke="currentColor" stroke-opacity="0.2" />
+                                    <path
+                                        d="M24 19V25C24 25.5304 23.7893 26.0391 23.4142 26.4142C23.0391 26.7893 22.5304 27 22 27H11C10.4696 27 9.96086 26.7893 9.58579 26.4142C9.21071 26.0391 9 25.5304 9 25V14C9 13.4696 9.21071 12.9609 9.58579 12.5858C9.96086 12.2107 10.4696 12 11 12H17"
+                                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M21 9H27V15" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16 20L27 9" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <span class="link-label">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 (even - image right via order-2) -->
+                <div class="project-card">
+                    <div class="project-image-wrap order-2">
+                        <img src="./images/projects image/ecommerce.jpg" alt="E-Commerce Platform Project"
+                            class="project-img" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-heading">E-Commerce Shopping Platform</h4>
+                        <p class="project-description">
+                            I developed a fully responsive e-commerce website using HTML, CSS, JavaScript, and Tailwind
+                            CSS.
+                            It includes product listing, product detail pages, a shopping cart, and responsive
+                            navigation
+                            for mobile and desktop. JavaScript handles cart actions like adding items and updating
+                            quantities. The project focuses on clean UI, responsiveness, performance, and smooth user
+                            experience across all devices.
+                        <div class="project-tags">
+                            <button class="tag-btn">HTML</button>
+                            <button class="tag-btn">CSS</button>
+                            <button class="tag-btn">Javascript</button>
+                            <button class="tag-btn">Tailwind CSS</button>
+                        </div>
+                        <div class="project-link">
+                            <a href="https://shavindercommerce.netlify.app/" aria-label="View project">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="18" cy="18" r="17.5" stroke="currentColor" stroke-opacity="0.2" />
+                                    <path
+                                        d="M24 19V25C24 25.5304 23.7893 26.0391 23.4142 26.4142C23.0391 26.7893 22.5304 27 22 27H11C10.4696 27 9.96086 26.7893 9.58579 26.4142C9.21071 26.0391 9 25.5304 9 25V14C9 13.4696 9.21071 12.9609 9.58579 12.5858C9.96086 12.2107 10.4696 12 11 12H17"
+                                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M21 9H27V15" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16 20L27 9" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <span class="link-label">View Project</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+            <!-- Contact Section -->
+
+            <section class="contact_section" id="contact">
+                <div class="contact_container">
+
+                    <!-- Title -->
+                    <div class="title">
+                        <button class="section_btn">Contact</button>
+                        <h2 class="section_headline">Some of the noteworthy projects I have built:</h2>
+                    </div>
+
+                    <!-- Main Layout -->
+                    <div class="contact_wrapper">
+
+                        <!-- LEFT -->
+                        <div class="contact_information">
+
+                            <div class="info_top">
+                                <h2>Contact Information</h2>
+                                <p>Say something to start alive Chat</p>
+                            </div>
+
+                            <div class="info_items">
+                                <div class="info_row">
+                                    <span>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" class=""
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M20 10.999H22C22 5.869 18.127 2 12.99 2V4C17.052 4 20 6.943 20 10.999Z"
+                                                stroke="white"></path>
+                                            <path
+                                                d="M13 7.99999C15.103 7.99999 16 8.89699 16 11H18C18 7.77499 16.225 5.99999 13 5.99999V7.99999ZM16.422 13.443C16.2299 13.2683 15.9774 13.1752 15.7178 13.1832C15.4583 13.1912 15.212 13.2998 15.031 13.486L12.638 15.947C12.062 15.837 10.904 15.476 9.71201 14.287C8.52001 13.094 8.15901 11.933 8.05201 11.361L10.511 8.96699C10.6974 8.78612 10.8061 8.53982 10.8142 8.2802C10.8222 8.02059 10.7289 7.76804 10.554 7.57599L6.85901 3.51299C6.68405 3.32035 6.44089 3.2035 6.18116 3.18725C5.92143 3.17101 5.66561 3.25665 5.46801 3.42599L3.29801 5.28699C3.12512 5.46051 3.02193 5.69145 3.00801 5.93599C2.99301 6.18599 2.70701 12.108 7.29901 16.702C11.305 20.707 16.323 21 17.705 21C17.907 21 18.031 20.994 18.064 20.992C18.3085 20.9783 18.5393 20.8747 18.712 20.701L20.572 18.53C20.7415 18.3325 20.8273 18.0768 20.8112 17.817C20.7952 17.5573 20.6785 17.3141 20.486 17.139L16.422 13.443Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <p>+91 7087711309</p>
+                                </div>
+
+                                <div class="info_row">
+                                    <span>
+                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                            class="fill-white dark:fill-black" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22 4H2V20H22V4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"></path>
+                                        </svg>
+                                    </span>
+                                    <p>singhshub3004@gmail.com</p>
+                                </div>
+
+                                <div class="info_row">
+                                    <span>
+                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                            class="fill-white dark:fill-black" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 1.5C9.81276 1.50258 7.71584 2.3726 6.16923 3.91922C4.62261 5.46584 3.75259 7.56276 3.75001 9.75C3.74739 11.5374 4.33124 13.2763 5.41201 14.7C5.41201 14.7 5.63701 14.9963 5.67376 15.039L12 22.5L18.3293 15.0353C18.3623 14.9955 18.588 14.7 18.588 14.7L18.5888 14.6978C19.669 13.2747 20.2526 11.5366 20.25 9.75C20.2474 7.56276 19.3774 5.46584 17.8308 3.91922C16.2842 2.3726 14.1873 1.50258 12 1.5ZM12 12.75C11.4067 12.75 10.8266 12.5741 10.3333 12.2444C9.83995 11.9148 9.45543 11.4462 9.22837 10.8981C9.00131 10.3499 8.9419 9.74667 9.05765 9.16473C9.17341 8.58279 9.45913 8.04824 9.87869 7.62868C10.2982 7.20912 10.8328 6.9234 11.4147 6.80764C11.9967 6.69189 12.5999 6.7513 13.1481 6.97836C13.6962 7.20542 14.1648 7.58994 14.4944 8.08329C14.8241 8.57664 15 9.15666 15 9.75C14.999 10.5453 14.6826 11.3078 14.1202 11.8702C13.5578 12.4326 12.7954 12.749 12 12.75Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <p>Kharar, Chandigarh</p>
+                                </div>
+                            </div>
+
+                            <div class="socials_contact_section">
+                                <span>
+                                    <a href="https://www.facebook.com/shawindersingh.shub">
+                                        <svg fill="white" class="facebook_icon" height="30px" width="30px" version="1.1"
+                                            id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 324.143 324.143"
+                                            xml:space="preserve">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                            </g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <g>
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M162.071,0C73.162,0,0.83,72.332,0.83,161.241c0,37.076,12.788,73.004,36.1,101.677 c-6.65,16.756-17.788,31.245-32.401,42.089c-2.237,1.66-3.37,4.424-2.94,7.177c0.429,2.754,2.349,5.042,4.985,5.942 c11.683,3.992,23.856,6.017,36.182,6.017c19.572,0,38.698-5.093,55.569-14.763c20.158,8.696,41.584,13.104,63.747,13.104 c88.909,0,161.241-72.333,161.241-161.242S250.98,0,162.071,0z M162.071,307.483c-21.32,0-41.881-4.492-61.11-13.351 c-2.292-1.057-4.959-0.89-7.102,0.443c-15.313,9.529-32.985,14.566-51.104,14.566c-6.053,0-12.065-0.564-17.981-1.684 c12.521-12.12,22.014-26.95,27.788-43.547c0.878-2.525,0.346-5.328-1.398-7.354C28.378,230.07,15.83,196.22,15.83,161.241 C15.83,80.604,81.434,15,162.071,15s146.241,65.604,146.241,146.241C308.313,241.88,242.709,307.483,162.071,307.483z">
+                                                            </path>
+                                                            <path
+                                                                d="M205.201,113.646h-21.2v-6.94c0-0.568,0.057-0.932,0.106-1.142c0.099-0.017,0.227-0.029,0.378-0.029h20.258 c4.143,0,7.5-3.357,7.5-7.5V67.093c0-4.13-3.339-7.483-7.47-7.5l-27.926-0.113c-33.585,0-45.502,24.429-45.502,45.349v8.818 h-10.406c-4.143,0-7.5,3.357-7.5,7.5v36.115c0,4.143,3.357,7.5,7.5,7.5h10.556v82.782c0,4.143,3.357,7.5,7.5,7.5h36.112 c4.143,0,7.5-3.357,7.5-7.5v-82.782h19.304c3.879,0,7.117-2.957,7.469-6.819l3.29-36.115c0.191-2.099-0.509-4.182-1.93-5.737 C209.319,114.533,207.309,113.646,205.201,113.646z M195.063,149.762h-19.956c-4.143,0-7.5,3.357-7.5,7.5v82.782h-21.112v-82.782 c0-4.143-3.357-7.5-7.5-7.5h-10.556v-21.115h10.406c4.143,0,7.5-3.357,7.5-7.5v-16.318c0-9.125,2.972-30.349,30.472-30.349 l20.426,0.083v15.973h-12.758c-7.458,0-15.484,5.061-15.484,16.171v14.44c0,4.143,3.357,7.5,7.5,7.5h20.486L195.063,149.762z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="https://www.instagram.com/shavinder141/">
+                                        <svg width="30" height="30" viewBox="0 0 30 30" fill="white"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="15" cy="15" r="15" fill="white"></circle>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.4078 7.04497C13.2076 7.00815 13.4626 6.99997 15.4999 6.99997C17.5372 6.99997 17.7922 7.00883 18.5912 7.04497C19.3903 7.08111 19.9358 7.20861 20.4131 7.39338C20.9128 7.58224 21.3662 7.87747 21.7412 8.25929C22.1231 8.63361 22.4176 9.08633 22.6058 9.58679C22.7912 10.0641 22.9181 10.6095 22.9549 11.4072C22.9917 12.2084 22.9999 12.4634 22.9999 14.5C22.9999 16.5372 22.991 16.7922 22.9549 17.592C22.9187 18.3897 22.7912 18.9352 22.6058 19.4125C22.4176 19.913 22.1226 20.3665 21.7412 20.7413C21.3662 21.1232 20.9128 21.4177 20.4131 21.6059C19.9358 21.7913 19.3903 21.9182 18.5926 21.955C17.7922 21.9918 17.5372 22 15.4999 22C13.4626 22 13.2076 21.9911 12.4078 21.955C11.6101 21.9188 11.0647 21.7913 10.5874 21.6059C10.0869 21.4177 9.63339 21.1226 9.25851 20.7413C8.87696 20.3668 8.58168 19.9135 8.39329 19.4132C8.20851 18.9359 8.0817 18.3904 8.04488 17.5927C8.00806 16.7916 7.99988 16.5366 7.99988 14.5C7.99988 12.4627 8.00874 12.2077 8.04488 11.4086C8.08101 10.6095 8.20851 10.0641 8.39329 9.58679C8.58196 9.08639 8.87746 8.63314 9.2592 8.25861C9.63354 7.87713 10.0866 7.58186 10.5867 7.39338C11.064 7.20861 11.6094 7.08179 12.4072 7.04497H12.4078ZM18.5306 8.39497C17.7397 8.35883 17.5024 8.35133 15.4999 8.35133C13.4974 8.35133 13.2601 8.35883 12.4692 8.39497C11.7376 8.42838 11.3408 8.55042 11.0762 8.65338C10.7265 8.78974 10.4762 8.95133 10.2137 9.21383C9.96491 9.45591 9.77341 9.75062 9.65329 10.0763C9.55033 10.3409 9.42829 10.7377 9.39488 11.4693C9.35874 12.2602 9.35124 12.4975 9.35124 14.5C9.35124 16.5025 9.35874 16.7397 9.39488 17.5307C9.42829 18.2622 9.55033 18.6591 9.65329 18.9236C9.77329 19.2488 9.96488 19.5441 10.2137 19.7861C10.4558 20.035 10.751 20.2266 11.0762 20.3466C11.3408 20.4495 11.7376 20.5716 12.4692 20.605C13.2601 20.6411 13.4967 20.6486 15.4999 20.6486C17.5031 20.6486 17.7397 20.6411 18.5306 20.605C19.2622 20.5716 19.659 20.4495 19.9235 20.3466C20.2733 20.2102 20.5235 20.0486 20.786 19.7861C21.0349 19.5441 21.2265 19.2488 21.3465 18.9236C21.4494 18.6591 21.5715 18.2622 21.6049 17.5307C21.641 16.7397 21.6485 16.5025 21.6485 14.5C21.6485 12.4975 21.641 12.2602 21.6049 11.4693C21.5715 10.7377 21.4494 10.3409 21.3465 10.0763C21.2101 9.72656 21.0485 9.47633 20.786 9.21383C20.5439 8.96502 20.2492 8.77352 19.9235 8.65338C19.659 8.55042 19.2622 8.42838 18.5306 8.39497ZM14.5419 16.812C15.0769 17.0347 15.6726 17.0648 16.2273 16.8971C16.782 16.7293 17.2613 16.3742 17.5832 15.8924C17.9052 15.4106 18.0499 14.8319 17.9926 14.2553C17.9354 13.6786 17.6797 13.1397 17.2692 12.7307C17.0075 12.4692 16.6912 12.2689 16.3428 12.1444C15.9945 12.0198 15.6229 11.9741 15.2548 12.0104C14.8866 12.0467 14.5311 12.1642 14.2138 12.3544C13.8966 12.5446 13.6254 12.8027 13.4199 13.1103C13.2143 13.4179 13.0796 13.7672 13.0252 14.1331C12.9709 14.499 12.9984 14.8724 13.1057 15.2265C13.213 15.5805 13.3975 15.9063 13.6458 16.1805C13.8942 16.4546 14.2002 16.6703 14.5419 16.812ZM12.774 11.7741C13.1319 11.4161 13.5569 11.1321 14.0246 10.9384C14.4923 10.7447 14.9936 10.645 15.4999 10.645C16.0061 10.645 16.5074 10.7447 16.9751 10.9384C17.4428 11.1321 17.8678 11.4161 18.2258 11.7741C18.5838 12.132 18.8677 12.557 19.0615 13.0247C19.2552 13.4924 19.3549 13.9937 19.3549 14.5C19.3549 15.0062 19.2552 15.5075 19.0615 15.9752C18.8677 16.4429 18.5838 16.8679 18.2258 17.2259C17.5028 17.9488 16.5223 18.355 15.4999 18.355C14.4775 18.355 13.4969 17.9488 12.774 17.2259C12.051 16.5029 11.6449 15.5224 11.6449 14.5C11.6449 13.4776 12.051 12.497 12.774 11.7741ZM20.2099 11.2191C20.2986 11.1354 20.3696 11.0348 20.4187 10.9231C20.4678 10.8115 20.4941 10.6912 20.4958 10.5692C20.4976 10.4473 20.4749 10.3263 20.4291 10.2132C20.3832 10.1002 20.3152 9.99759 20.2289 9.91136C20.1427 9.82513 20.0401 9.75708 19.9271 9.71123C19.8141 9.66539 19.693 9.64268 19.5711 9.64446C19.4491 9.64624 19.3288 9.67246 19.2172 9.72158C19.1056 9.7707 19.0049 9.84172 18.9212 9.93042C18.7585 10.1029 18.6694 10.3321 18.6729 10.5692C18.6763 10.8064 18.7721 11.0328 18.9398 11.2005C19.1075 11.3682 19.3339 11.464 19.5711 11.4674C19.8082 11.4709 20.0374 11.3818 20.2099 11.2191Z"
+                                                fill="black"></path>
+                                        </svg>
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="https://www.linkedin.com/in/shavinder-singh-b281b22a7/">
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="29" height="29"
+                                            viewBox="0 0 64 64" class="linkedin_icon">
+                                            <path
+                                                d="M37.5,27c3.59,0,6.5,2.91,6.5,6.5c0,0,0,4.79,0,7.179C44,41.408,43.408,42,42.679,42c-0.436,0-0.921,0-1.357,0	C40.592,42,40,41.408,40,40.679V34.5c0-1.925-1.575-3.5-3.5-3.5S33,32.575,33,34.5c0,0,0,4.026,0,6.179	C33,41.408,32.408,42,31.679,42c-0.436,0-0.921,0-1.357,0C29.592,42,29,41.408,29,40.679c0-2.843,0-9.514,0-12.357	C29,27.592,29.592,27,30.321,27c0.436,0,0.921,0,1.357,0C32.408,27,33,27.592,33,28.321v0.495C34.168,27.694,35.752,27,37.5,27z">
+                                            </path>
+                                            <path
+                                                d="M25,28.34c0,2.847,0,9.474,0,12.321C25,41.4,24.4,42,23.66,42c-0.425,0-0.896,0-1.321,0C21.6,42,21,41.4,21,40.66	c0-2.847,0-9.474,0-12.321C21,27.6,21.6,27,22.34,27c0.425,0,0.896,0,1.321,0C24.4,27,25,27.6,25,28.34z">
+                                            </path>
+                                            <path fill-rule="evenodd"
+                                                d="M23,20c1.104,0,2,0.896,2,2s-0.896,2-2,2s-2-0.896-2-2S21.896,20,23,20z"
+                                                clip-rule="evenodd"></path>
+                                            <path fill="#060000"
+                                                d="M32,54c-12.131,0-22-9.869-22-22s9.869-22,22-22s22,9.869,22,22S44.131,54,32,54z M32,14	c-9.925,0-18,8.075-18,18s8.075,18,18,18s18-8.075,18-18S41.925,14,32,14z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </span>
+                            </div>
+
+                            <!-- SVG Decoration -->
+                            <div class="decor_svg">
+                                <svg class="big_circle" viewBox="0 0 200 200">
+                                    <circle cx="100" cy="100" r="100" fill="#111827" />
+                                </svg>
+
+                                <svg class="small_circle" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50" fill="#2c3a4d" />
+                                </svg>
+                            </div>
+
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div class="contact_form">
+                            <form id="form">
+
+                                <div class="form_grid">
+                                    <div>
+                                        <label>First Name</label>
+                                        <input type="text" placeholder="First Name" id="fname" name="fname">
+                                    </div>
+
+                                    <div>
+                                        <label>Last Name</label>
+                                        <input type="text" placeholder="Last Name" id="lname" name="lname">
+                                    </div>
+
+                                    <div>
+                                        <label>Email</label>
+                                        <input type="email" placeholder="demo@example.com" id="email" name="email">
+                                    </div>
+
+                                    <div>
+                                        <label>Phone Number</label>
+                                        <input type="number" placeholder="Enter Your No." id="phno" name="phno">
+                                    </div>
+                                </div>
+
+                                <div class="subject">
+                                    <h3>Select Subject?</h3>
+                                    <div class="radio_group">
+                                        <label><input type="radio" name="sub" value="General Enquiry"> General
+                                            Enquiry</label>
+                                        <label><input type="radio" name="sub" value="Work"> Work</label>
+                                        <label><input type="radio" name="sub" value="Upwork"> Upwork</label>
+                                        <label><input type="radio" name="sub" value="Other"> Other</label>
+                                    </div>
+                                </div>
+
+                                <div class="message">
+                                    <label>Message</label>
+                                    <input type="text" placeholder="Write Message" id="message" name="message">
+                                </div>
+
+                                <button class="submit_btn" type="submit" id="submit_form">Send Message</button>
+
+                            </form>
+                            <div id="form_popup">Email sent successfully!</div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+
+            <!-- Footer Section -->
+
+
+            <section class="footer">
+
+                <div class="footer-title">
+                    <button class="section_btn">Get In Touch</button>
+                </div>
+
+                <p class="footer-desc section_headline">
+                    What’s next? Feel free to reach out to me if you're looking for a
+                    developer, have a query, or simply want to connect.
+                </p>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+
+                    <div class="contact-item footer_socials">
+                        <span class="icon">
+                            <svg width="24" height="24" class="footer_icon" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M26.6665 5.3335H5.33317C3.86041 5.3335 2.6665 6.5274 2.6665 8.00016V24.0002C2.6665 25.4729 3.86041 26.6668 5.33317 26.6668H26.6665C28.1393 26.6668 29.3332 25.4729 29.3332 24.0002V8.00016C29.3332 6.5274 28.1393 5.3335 26.6665 5.3335Z"
+                                    stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M29.3332 9.3335L17.3732 16.9335C16.9615 17.1914 16.4856 17.3282 15.9998 17.3282C15.5141 17.3282 15.0381 17.1914 14.6265 16.9335L2.6665 9.3335"
+                                    stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </span>
+                        <a href="mailto:singhshub3004@gmail.com">
+                            singhshub3004@gmail.com
+                        </a>
+                        <div id="popup">Your message is copied</div>
+                        <span class="copy_clipBoard" data-value="singhshub3004@gmail.com">
+                            <svg width="32" height="32" class="footer_icon" viewBox="0 0 44 44" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M32.6665 16.6665H19.3332C17.8604 16.6665 16.6665 17.8604 16.6665 19.3332V32.6665C16.6665 34.1393 17.8604 35.3332 19.3332 35.3332H32.6665C34.1393 35.3332 35.3332 34.1393 35.3332 32.6665V19.3332C35.3332 17.8604 34.1393 16.6665 32.6665 16.6665Z"
+                                    stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M11.3332 27.3332C9.8665 27.3332 8.6665 26.1332 8.6665 24.6665V11.3332C8.6665 9.8665 9.8665 8.6665 11.3332 8.6665H24.6665C26.1332 8.6665 27.3332 9.8665 27.3332 11.3332"
+                                    stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </span>
+                    </div>
+
+                    <div class="contact-item footer_socials">
+                        <span class="icon">
+                            <svg width="24" height="24" class="footer_icon" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M29.3334 22.56V26.56C29.3349 26.9313 29.2589 27.2989 29.1101 27.6391C28.9613 27.9793 28.7431 28.2848 28.4695 28.5358C28.1959 28.7868 27.8728 28.9779 27.5211 29.0969C27.1693 29.2159 26.7966 29.2601 26.4267 29.2266C22.3239 28.7808 18.3827 27.3788 14.9201 25.1333C11.6985 23.0862 8.96719 20.3549 6.92007 17.1333C4.66671 13.6549 3.2644 9.69463 2.82674 5.5733C2.79342 5.20459 2.83724 4.83298 2.95541 4.48213C3.07357 4.13128 3.2635 3.80889 3.51309 3.53546C3.76269 3.26204 4.06648 3.04358 4.40513 2.894C4.74378 2.74441 5.10986 2.66698 5.48007 2.66663H9.48007C10.1271 2.66026 10.7545 2.8894 11.2451 3.31134C11.7357 3.73328 12.0562 4.31923 12.1467 4.95997C12.3156 6.24006 12.6287 7.49694 13.0801 8.70663C13.2595 9.18387 13.2983 9.70252 13.1919 10.2011C13.0856 10.6998 12.8386 11.1574 12.4801 11.52L10.7867 13.2133C12.6848 16.5514 15.4487 19.3152 18.7867 21.2133L20.4801 19.52C20.8426 19.1615 21.3003 18.9144 21.7989 18.8081C22.2975 18.7018 22.8162 18.7406 23.2934 18.92C24.5031 19.3714 25.76 19.6845 27.0401 19.8533C27.6878 19.9447 28.2793 20.2709 28.7021 20.77C29.125 21.269 29.3496 21.9061 29.3334 22.56Z"
+                                    stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </span>
+                        <a href="tel:7087711309">
+                            7087711309
+                        </a>
+                        <span class="copy_clipBoard " data-value="7087711309">
+                            <svg width="32" height="32" class="footer_icon" viewBox="0 0 44 44" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M32.6665 16.6665H19.3332C17.8604 16.6665 16.6665 17.8604 16.6665 19.3332V32.6665C16.6665 34.1393 17.8604 35.3332 19.3332 35.3332H32.6665C34.1393 35.3332 35.3332 34.1393 35.3332 32.6665V19.3332C35.3332 17.8604 34.1393 16.6665 32.6665 16.6665Z"
+                                    stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M11.3332 27.3332C9.8665 27.3332 8.6665 26.1332 8.6665 24.6665V11.3332C8.6665 9.8665 9.8665 8.6665 11.3332 8.6665H24.6665C26.1332 8.6665 27.3332 9.8665 27.3332 11.3332"
+                                    stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- Social -->
+                <span class="social-text onlyfade">
+                    You may also find me on these platforms!
+                </span>
+
+                <div class="social-icons">
+                    <a href="https://github.com/Shavinder-Singh">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="36" height="36">
+                            <path fill="white"
+                                d="M 29 17 C 22.383 17 17 22.383 17 29 L 17 71 C 17 77.617 22.383 83 29 83 L 71 83 C 77.617 83 83 77.617 83 71 L 83 29 C 83 22.383 77.617 17 71 17 L 29 17 z M 29 19 L 71 19 C 76.514 19 81 23.486 81 29 L 81 71 C 81 76.514 76.514 81 71 81 L 29 81 C 23.486 81 19 76.514 19 71 L 19 29 C 19 23.486 23.486 19 29 19 z M 34.5 23 C 28.159 23 23 28.159 23 34.5 L 23 65.5 C 23 71.841 28.159 77 34.5 77 L 41.976562 77 L 58.976562 77 L 65.5 77 C 71.841 77 77 71.841 77 65.5 L 77 50.5 C 77 50.224 76.776 50 76.5 50 C 76.224 50 76 50.224 76 50.5 L 76 65.5 C 76 71.29 71.29 76 65.5 76 L 59.476562 76 L 59.476562 67.654297 C 59.476563 65.441297 58.439422 63.368 56.732422 62 L 57.425781 62 C 64.598781 62 70.433594 56.186062 70.433594 49.039062 C 70.433594 45.802062 69.233828 42.710641 67.048828 40.306641 C 67.378828 38.242641 67.384219 35.143797 66.449219 32.341797 C 66.380219 32.137797 66.189609 32 65.974609 32 C 61.923609 32 58.503172 34.689 57.076172 36 L 44.667969 36 C 41.167969 32.696 38.012563 32 35.976562 32 C 35.761563 32 35.570953 32.137797 35.501953 32.341797 C 34.733953 34.642797 34.396469 37.396609 34.605469 39.599609 C 32.006469 42.053609 30.521484 45.479016 30.521484 49.041016 C 30.521484 56.187016 36.355344 62 43.527344 62 L 44.195312 62 C 42.874313 63.032 41.928406 64.451094 41.566406 65.996094 C 39.569406 65.964094 37.279938 65.668453 36.210938 64.064453 C 33.785937 60.424453 32.562609 60.152344 30.974609 60.152344 C 30.311609 60.152344 29.812516 60.442266 29.603516 60.947266 C 29.309516 61.655266 29.652484 62.597797 30.521484 63.466797 C 31.693484 64.639797 31.694672 64.638391 32.888672 67.025391 C 33.610672 68.469391 35.679563 70.863141 41.476562 70.994141 L 41.476562 76 L 34.5 76 C 28.71 76 24 71.29 24 65.5 L 24 34.5 C 24 28.71 28.71 24 34.5 24 L 65.5 24 C 65.776 24 66 23.776 66 23.5 C 66 23.224 65.776 23 65.5 23 L 34.5 23 z M 36.337891 33.007812 C 38.205891 33.091813 40.957156 33.850344 44.035156 36.777344 L 44.126953 36.865234 C 44.219953 36.952234 44.34175 37 44.46875 37 L 57.273438 37 C 57.400437 37 57.533953 36.942469 57.626953 36.855469 C 58.818953 35.732469 61.931281 33.169812 65.613281 33.007812 C 66.412281 35.652813 66.354484 38.524906 66.021484 40.378906 C 65.993484 40.535906 66.041391 40.695547 66.150391 40.810547 C 68.266391 43.052547 69.433594 45.975062 69.433594 49.039062 C 69.433594 55.634062 64.046781 61 57.425781 61 L 54.976562 61 C 54.741562 61 54.538281 61.163578 54.488281 61.392578 C 54.437281 61.621578 54.553578 61.855125 54.767578 61.953125 C 57.019578 62.986125 58.476562 65.223297 58.476562 67.654297 L 58.476562 76 L 42.476562 76 L 42.476562 70.5 C 42.476562 70.224 42.252563 70 41.976562 70 C 37.795563 70 34.885203 68.784125 33.783203 66.578125 C 32.540203 64.093125 32.515516 64.046766 31.228516 62.759766 C 30.557516 62.087766 30.441344 61.536078 30.527344 61.330078 C 30.590344 61.175078 30.834609 61.152344 30.974609 61.152344 C 32.097609 61.152344 33.067906 61.152141 35.378906 64.619141 C 36.785906 66.728141 39.643563 67 41.976562 67 C 42.221562 67 42.42975 66.822078 42.46875 66.580078 C 42.78675 64.631078 44.209594 62.859078 46.183594 61.955078 C 46.397594 61.857078 46.515844 61.623531 46.464844 61.394531 C 46.414844 61.164531 46.211562 61 45.976562 61 L 43.529297 61 C 36.909297 61 31.521484 55.634062 31.521484 49.039062 C 31.521484 45.674062 32.958844 42.439062 35.464844 40.164062 C 35.583844 40.055063 35.645953 39.896328 35.626953 39.736328 C 35.397953 37.769328 35.675891 35.169812 36.337891 33.007812 z M 76.5 34 C 76.224 34 76 34.224 76 34.5 L 76 38 C 76 38.276 76.224 38.5 76.5 38.5 C 76.776 38.5 77 38.276 77 38 L 77 34.5 C 77 34.224 76.776 34 76.5 34 z M 76.5 41 C 76.224 41 76 41.224 76 41.5 L 76 48 C 76 48.276 76.224 48.5 76.5 48.5 C 76.776 48.5 77 48.276 77 48 L 77 41.5 C 77 41.224 76.776 41 76.5 41 z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shavinder-singh-b281b22a7/">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="28" height="28">
+                            <path fill="white"
+                                d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z M 9 6 L 41 6 C 42.668484 6 44 7.3315161 44 9 L 44 41 C 44 42.668484 42.668484 44 41 44 L 9 44 C 7.3315161 44 6 42.668484 6 41 L 6 9 C 6 7.3315161 7.3315161 6 9 6 z M 14 11.011719 C 12.904779 11.011719 11.919219 11.339079 11.189453 11.953125 C 10.459687 12.567171 10.011719 13.484511 10.011719 14.466797 C 10.011719 16.333977 11.631285 17.789609 13.691406 17.933594 A 0.98809878 0.98809878 0 0 0 13.695312 17.935547 A 0.98809878 0.98809878 0 0 0 14 17.988281 C 16.27301 17.988281 17.988281 16.396083 17.988281 14.466797 A 0.98809878 0.98809878 0 0 0 17.986328 14.414062 C 17.884577 12.513831 16.190443 11.011719 14 11.011719 z M 14 12.988281 C 15.392231 12.988281 15.94197 13.610038 16.001953 14.492188 C 15.989803 15.348434 15.460091 16.011719 14 16.011719 C 12.614594 16.011719 11.988281 15.302225 11.988281 14.466797 C 11.988281 14.049083 12.140703 13.734298 12.460938 13.464844 C 12.78117 13.19539 13.295221 12.988281 14 12.988281 z M 11 19 A 1.0001 1.0001 0 0 0 10 20 L 10 39 A 1.0001 1.0001 0 0 0 11 40 L 17 40 A 1.0001 1.0001 0 0 0 18 39 L 18 33.134766 L 18 20 A 1.0001 1.0001 0 0 0 17 19 L 11 19 z M 20 19 A 1.0001 1.0001 0 0 0 19 20 L 19 39 A 1.0001 1.0001 0 0 0 20 40 L 26 40 A 1.0001 1.0001 0 0 0 27 39 L 27 29 C 27 28.170333 27.226394 27.345035 27.625 26.804688 C 28.023606 26.264339 28.526466 25.940057 29.482422 25.957031 C 30.468166 25.973981 30.989999 26.311669 31.384766 26.841797 C 31.779532 27.371924 32 28.166667 32 29 L 32 39 A 1.0001 1.0001 0 0 0 33 40 L 39 40 A 1.0001 1.0001 0 0 0 40 39 L 40 28.261719 C 40 25.300181 39.122788 22.95433 37.619141 21.367188 C 36.115493 19.780044 34.024172 19 31.8125 19 C 29.710483 19 28.110853 19.704889 27 20.423828 L 27 20 A 1.0001 1.0001 0 0 0 26 19 L 20 19 z M 12 21 L 16 21 L 16 33.134766 L 16 38 L 12 38 L 12 21 z M 21 21 L 25 21 L 25 22.560547 A 1.0001 1.0001 0 0 0 26.798828 23.162109 C 26.798828 23.162109 28.369194 21 31.8125 21 C 33.565828 21 35.069366 21.582581 36.167969 22.742188 C 37.266572 23.901794 38 25.688257 38 28.261719 L 38 38 L 34 38 L 34 29 C 34 27.833333 33.720468 26.627107 32.990234 25.646484 C 32.260001 24.665862 31.031834 23.983076 29.517578 23.957031 C 27.995534 23.930001 26.747519 24.626988 26.015625 25.619141 C 25.283731 26.611293 25 27.829667 25 29 L 25 38 L 21 38 L 21 21 z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/shavinder141/">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28" height="28">
+                            <path fill="white"
+                                d="M 15 4 C 8.9365932 4 4 8.9365932 4 15 L 4 33 C 4 39.063407 8.9365932 44 15 44 L 33 44 C 39.063407 44 44 39.063407 44 33 L 44 15 C 44 8.9365932 39.063407 4 33 4 L 15 4 z M 15 6 L 33 6 C 37.982593 6 42 10.017407 42 15 L 42 33 C 42 37.982593 37.982593 42 33 42 L 15 42 C 10.017407 42 6 37.982593 6 33 L 6 15 C 6 10.017407 10.017407 6 15 6 z M 35 11 C 33.895 11 33 11.895 33 13 C 33 14.105 33.895 15 35 15 C 36.105 15 37 14.105 37 13 C 37 11.895 36.105 11 35 11 z M 24 14 C 18.488666 14 14 18.488666 14 24 C 14 29.511334 18.488666 34 24 34 C 29.511334 34 34 29.511334 34 24 C 34 18.488666 29.511334 14 24 14 z M 24 16 C 28.430666 16 32 19.569334 32 24 C 32 28.430666 28.430666 32 24 32 C 19.569334 32 16 28.430666 16 24 C 16 19.569334 19.569334 16 24 16 z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+
+
+    <script src="./js/form.js" defer></script>
+    <script src="./js/animation.js" defer></script>
+    <script src="./js/themeSwitcher.js" defer></script>
+    <script src="./js/loader.js" defer></script>
+    <script>
+        let scrollTopBtn = document.querySelector(".scroll-container");
+        let timeout; // store timer
+
+
+        scrollTopBtn.addEventListener("click", () => {
+            if (navigator.vibrate) {
+                navigator.vibrate(200);
+            }
+        })
+        window.onscroll = function () {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollTopBtn.classList.add("show");
+
+
+                // clear previous timer
+                clearTimeout(timeout);
+
+                // set new timer
+                timeout = setTimeout(() => {
+                    scrollTopBtn.classList.remove("show");
+                }, 3000); // 3 sec is enough
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        };
+
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+    <!-- Script -->
+    <script>
+
+        let btn = document.getElementById("menu-btn");
+        let menu = document.getElementById("menu");
+
+        btn.onclick = function () {
+            menu.classList.toggle("active");
+            btn.classList.toggle("active");
+            document.body.classList.toggle("active");
+        };
+
+        // Footer year
+        const yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        function gotolink() {
+            let links = document.querySelectorAll("#menu a");
+            links.forEach(l => {
+                l.addEventListener("click", () => {
+                    menu.classList.remove("active");
+                    btn.classList.remove("active");
+                    document.body.classList.remove("active");
+                })
+            })
+        }
+        gotolink();
+
+
+
+
+        const copy_clipBoard = document.querySelectorAll(".copy_clipBoard");
+        copy_clipBoard.forEach(c => {
+            c.addEventListener("click", () => {
+                const val = c.dataset.value;
+                copyToClipBoard(val);
+            })
+        })
+        function copyToClipBoard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text)
+                    .then(() => {
+                        let popup = document.getElementById("popup");
+                        popup.classList.add("show");
+                        setTimeout(() => {
+                            popup.classList.remove("show");
+                        }, 2000);
+
+                        console.log("Text Copied To Clipboard");
+                    })
+                    .catch(err => {
+                        console.log("Could not copy text: ", err);
+                    })
+            }
+            else {
+                console.log("Clipboard API not supported");
+            }
+
+        }
+
+
+
+        // make sound on download
+        const download_button = document.querySelector(".download_button");
+        download_button.addEventListener("click", () => {
+            const audio = new Audio('./beep.mp3');
+            audio.play().catch(err => {
+                console.log("Audio blocked:", err);
+            });
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="form.js"></script>
+</body>
+
+</html>

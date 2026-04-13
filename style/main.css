@@ -1,0 +1,213 @@
+/* ================= BASE RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= GLOBAL ================= */
+.hero_container {
+    margin: 0 auto;
+    padding: 64px 16px;
+    background-color: var(--primary-color);
+}
+
+.section {
+    padding: 64px 0;
+}
+
+.section-title {
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* ================= HERO ================= */
+.hero-card {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 48px;
+    text-align: center;
+}
+
+.hero-content {
+    width: 100%;
+    text-align: left;
+}
+.hero-photo{
+    display: flex;
+    justify-content: center;
+}
+.greeting {
+    font-size: 36px;
+    color: var(--white-color);
+    margin-bottom: 8px;
+}
+
+.bio {
+    font-family: interRegular;
+    font-size: 16px;
+    color: var(--secondary-color);
+    margin-bottom: 48px;
+    line-height: 24px;
+}
+
+.meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 48px;
+    align-items: flex-start;
+}
+
+.meta-item {
+    font-family: interRegular;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    color: var(--secondary-color);
+}
+.meta-item .status-text{
+    font-family: interRegular;
+}
+.dark-theme .meta-item svg path{
+    stroke: black;
+
+}
+.socials {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+.dark-theme .socials svg path{
+    stroke: black;
+}
+
+.hero-photo img {
+    width: 205px;
+    height: 150px;
+    border-radius: 12px;
+}
+
+/* ================= GRID SECTIONS ================= */
+.about-grid,
+.project-grid,
+.testimonial-grid,
+.contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+/* ================= FORM ================= */
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.hero-photo img {
+width: 100%;
+height: 100%;
+}
+/* ================= 768px ================= */
+@media (min-width: 768px) {
+
+    .about-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-wrap {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 700px) {
+    .hero-photo img {
+        width: 500px;
+        height: 399px;
+    }
+}
+/* ================= 900px ================= */
+@media (min-width: 900px) {
+
+    .hero-card {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+        text-align: left;
+    }
+
+    .meta-item {
+        justify-content: flex-start;
+        color: var(--secondary-color);
+    }
+
+    .socials {
+        justify-content: flex-start;
+    }
+
+    .hero-photo {
+        /* width: 100%; */
+    }
+
+    .hero-photo img {
+        width: 800px;
+        height: 390px;
+    }
+    
+}
+
+
+/* ================= 1024px ================= */
+@media (min-width: 1024px) {
+
+    .hero_container {
+        /* max-width: 1100px; */
+        padding: 0;
+    }
+
+    .hero-card {
+        padding: 64px 40px;
+    }
+
+    .greeting {
+        font-size: 40px;
+        color: var(--white-color);
+    }
+
+    .bio {
+        max-width: 700px;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ================= 1440px ================= */
+@media (min-width: 1440px) {
+
+    .container {
+        max-width: 1300px;
+    }
+
+    .hero-card {
+        padding: 96px 80px;
+    }
+}

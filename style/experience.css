@@ -1,0 +1,161 @@
+/* Plain CSS for Experience section (loaded from index.html) */
+
+.experience_section {
+    background-color: var(--fourth-color);
+    padding: 64px 16px;
+}
+
+.experience_header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.experience_badge {
+    background: var(--third-color);
+    color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 4px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: var(--fs-small);
+    font-family: interMedium;
+}
+
+.experience_slogan {
+    color: var(--secondary-color);
+    text-align: center;
+    line-height: 28px;
+    margin: 0 auto 24px;
+    max-width: 70ch;
+    font-size: 18px;
+    font-family: interRegular;
+}
+
+.experience_card {
+    border-radius: 16px;
+    padding: 32px 32px;
+    margin-bottom: 24px;
+}
+.experience_card:last-child{
+    margin-bottom: 0px;
+}
+.experience_logo {
+    width: 160px;
+    height: auto;
+    display: block;
+    margin: 0 0 16px 0;
+}
+
+.experience_dates {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 16px;
+            font-family: interRegular;
+
+}
+
+.experience_dates h3 {
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.experience_dash {
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+
+.experience_role {
+    color: var(--white-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+            font-family: interBold;
+
+}
+
+.experience_points {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--secondary-color);
+    list-style: disc;
+}
+
+.experience_points li {
+    margin-bottom: 4px;
+    font-family: interRegular;
+    line-height: 24px;
+}
+
+    .experience_card {
+        background-color: var(--dark-violet);
+    }
+    .dark-theme .experience_card{
+        filter: drop-shadow(2px 4px 6px lightgrey);
+        
+    }
+@media (min-width: 900px) {
+    .experience_section {
+        padding: 96px 40px;
+    }
+
+    .experience_slogan {
+        margin-bottom: 48px;
+        font-size: 18px;
+    }
+
+    .experience_card {
+        display: flex;
+        justify-content: space-between;
+        gap: 48px;
+        align-items: flex-start;
+    }
+
+    .experience_logo {
+        width: 169px;
+        height: 70px;
+        object-fit: contain;
+        margin-bottom: 0;
+        flex: 0 0 auto;
+        order: 0;
+    }
+
+    .experience_details {
+        order: 0;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .experience_dates {
+        order: 3; /* push dates after details on tablet */
+        margin-bottom: 0;
+        flex: 0 0 auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .experience_section {
+        padding: 96px 80px;
+    }
+    .experience_card {
+        border-radius: 16px;
+        margin-bottom: 48px;
+    }
+    .experience_card:last-child{
+        margin-bottom: 0px;
+    }
+}
+
+@media (min-width: 1280px) {
+ .experience_details{
+    max-width: 384px;
+ }
+}
+
+
+
+
