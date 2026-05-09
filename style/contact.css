@@ -354,6 +354,7 @@ opacity: 0.3;
   /* Button */
   .submit_btn {
     background: #d1d5db;
+    color:black;
     border: none;
     padding: 10px 20px;
     cursor: pointer;

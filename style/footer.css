@@ -78,7 +78,9 @@
     filter: grayscale(100%);
     transition: 0.3s;
   }
-  
+  .dark-theme .social-icons-footer svg path{
+    fill:black;
+  }
   .social-icons img:hover {
     filter: grayscale(0%);
     transform: scale(1.1);
